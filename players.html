@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="_css/styles.css" rel="stylesheet">
+    <title>Players List</title>
+</head>
+<body>
+   
+    <script src="/socket.io/socket.io.js"></script>
+    <script type="text/javascript" src="/p.js"></script>
+    
+    <script>
+    let groupName = localStorage.getItem("groupName");
+    
+    socket = io()
+    socket.on('connect', function(){
+            console.log('Connected to server');
+            self.socket.emit('groupinfo', groupName);
+        })
+        
+        this.socket.on('groupMembers', function (groups){
+            let players_connected = counter(groups, groupName);
+            console.log('group data',groups,players_connected);
+        })
+        
+        this.socket.on('gameList', function (data,G11,G22,G33,G44,G55,G66,G77,G88,G99){
+            console.log('playerinfo',data,G11,G22,G33,G44,G55,G66,G77,G88,G99);
+            if (data.length === 4){
+                localStorage.setItem("G1", G11);
+                localStorage.setItem("G2", G22);
+                localStorage.setItem("G3", G33);
+                localStorage.setItem("grouplist", data);
+                location.href = "p4.html";
+            } else if (data.length === 8){
+                localStorage.setItem("G1", G11);
+                localStorage.setItem("G2", G22);
+                localStorage.setItem("G3", G33);
+                localStorage.setItem("G4", G44);
+                localStorage.setItem("G5", G55);
+                localStorage.setItem("G6", G66);
+                localStorage.setItem("grouplist",data);
+                location.href = "p8.html";
+            } else if (data.length === 12){
+                localStorage.setItem("G1", G11);
+                localStorage.setItem("G2", G22);
+                localStorage.setItem("G3", G33);
+                localStorage.setItem("G4", G44);
+                localStorage.setItem("G5", G55);
+                localStorage.setItem("G6", G66);
+                localStorage.setItem("G7", G77);
+                localStorage.setItem("G8", G88);
+                localStorage.setItem("G9", G99);
+                
+                localStorage.setItem("grouplist",data);
+                location.href = "p12.html";
+            } else {
+                alert("Only 12 players can be accomindated at this time");
+            }
+        })  
+    let joker_players = ["Robert Streeter","Carol Streeter","Zina Yaworski","Joe Yaworski","John Williams","Caroll Williams",
+                "Dan Reid","Linda Reid","Nancy Lynn","David Lynn","David Hunt","Angela Hunt",
+                "George Morita","Marilyn Morita","Diane Miller","Jim Miller","Brian Murphy","Marlene Murphy",
+                "Brian Budworth","Carole Budworth","Alice Carey","Tom Carey","Jane Cole","Terry Cole",
+                "Carole Elliott","Edith Kerbs","Werner Kerbs","Anne Taylor","Ruth Parkinson","Denise Potter",
+                "Henry Popp","Susan Popp","Rose Ryan","Heather Ley","Linda Heggie","Elizabeth Dixon","Gaye Bovair",
+                "Duice Bernardino","Joe Bernardino","Donna Chevrier","Michael Hooker","Ann Marie Jones","Tom Jones",
+                "Patricia Kotack","Ray Mathews","Shirley Mathews","Patricia McIntyre","Dianne Mitchell","Brenda Morrow",
+                "Bill Scarrow","Darlene Scarrow","Megs Shellard","Bridie Sneyd","Pat Sneyd",
+                "Peter Sneyd","Bob Swift","Linda Swift","Sheila Tavenor"];
+    let names = joker_players.sort();
+    
+
+    </script>
+    
+    <h1 id="players_connected">Pick Players for this Group</h1> 
+    <p><b>Note: Only one member of the Group should complete this page</b></p>
+    <table>
+        <tr>
+            <td><input type="checkbox" id="name1"></input>  <script>document.write(names[0])</script></td>
+            <td><input type="checkbox" id="name2"></input>  <script>document.write(names[1])</script></td>
+            <td><input type="checkbox" id="name3"></input>  <script>document.write(names[2])</script></td>
+            <td><input type="checkbox" id="name4"></input>  <script>document.write(names[3])</script></td>
+            <td><input type="checkbox" id="name5"></input>  <script>document.write(names[4])</script></td>
+            <td><input type="checkbox" id="name6"></input>  <script>document.write(names[5])</script></td>
+        </tr>
+        <tr>
+            <td><input type="checkbox" id="name7"></input>  <script>document.write(names[6])</script></td>
+            <td><input type="checkbox" id="name8"></input>  <script>document.write(names[7])</script></td>
+            <td><input type="checkbox" id="name9"></input>  <script>document.write(names[8])</script></td>
+            <td><input type="checkbox" id="name10"></input>  <script>document.write(names[9])</script></td>
+            <td><input type="checkbox" id="name11"></input>  <script>document.write(names[10])</script></td>
+            <td><input type="checkbox" id="name12"></input>  <script>document.write(names[11])</script></td>
+        </tr>
+        <tr>
+            <td><input type="checkbox" id="name13"></input>  <script>document.write(names[12])</script></td>
+            <td><input type="checkbox" id="name14"></input>  <script>document.write(names[13])</script></td>
+            <td><input type="checkbox" id="name15"></input>  <script>document.write(names[14])</script></td>
+            <td><input type="checkbox" id="name16"></input>  <script>document.write(names[15])</script></td>
+            <td><input type="checkbox" id="name17"></input>  <script>document.write(names[16])</script></td>
+            <td><input type="checkbox" id="name18"></input>  <script>document.write(names[17])</script></td>
+        </tr>
+        <tr>
+            <td><input type="checkbox" id="name19"></input>  <script>document.write(names[18])</script></td>
+            <td><input type="checkbox" id="name20"></input>  <script>document.write(names[19])</script></td>
+            <td><input type="checkbox" id="name21"></input>  <script>document.write(names[20])</script></td>
+            <td><input type="checkbox" id="name22"></input>  <script>document.write(names[21])</script></td>
+            <td><input type="checkbox" id="name23"></input>  <script>document.write(names[22])</script></td>
+            <td><input type="checkbox" id="name24"></input>  <script>document.write(names[23])</script></td>
+        </tr>
+        <tr>
+            <td><input type="checkbox" id="name25"></input>  <script>document.write(names[24])</script></td>
+            <td><input type="checkbox" id="name26"></input>  <script>document.write(names[25])</script></td>
+            <td><input type="checkbox" id="name27"></input>  <script>document.write(names[26])</script></td>
+            <td><input type="checkbox" id="name28"></input>  <script>document.write(names[27])</script></td>
+            <td><input type="checkbox" id="name29"></input>  <script>document.write(names[28])</script></td>
+            <td><input type="checkbox" id="name30"></input>  <script>document.write(names[29])</script></td>
+        </tr>
+        <tr>
+            <td><input type="checkbox" id="name31"></input>  <script>document.write(names[30])</script></td>
+            <td><input type="checkbox" id="name32"></input>  <script>document.write(names[31])</script></td>
+            <td><input type="checkbox" id="name33"></input>  <script>document.write(names[32])</script></td>
+            <td><input type="checkbox" id="name34"></input>  <script>document.write(names[33])</script></td>
+            <td><input type="checkbox" id="name35"></input>  <script>document.write(names[34])</script></td>
+            <td><input type="checkbox" id="name36"></input>  <script>document.write(names[35])</script></td>
+        </tr>
+        <tr>
+            <td><input type="checkbox" id="name37"></input>  <script>document.write(names[36])</script></td>
+            <td><input type="checkbox" id="name38"></input>  <script>document.write(names[37])</script></td>
+            <td><input type="checkbox" id="name39"></input>  <script>document.write(names[38])</script></td>
+            <td><input type="checkbox" id="name40"></input>  <script>document.write(names[39])</script></td>
+            <td><input type="checkbox" id="name41"></input>  <script>document.write(names[40])</script></td>
+            <td><input type="checkbox" id="name42"></input>  <script>document.write(names[41])</script></td>
+        </tr>
+        <tr>
+            <td><input type="checkbox" id="name43"></input>  <script>document.write(names[42])</script></td>
+            <td><input type="checkbox" id="name44"></input>  <script>document.write(names[43])</script></td>
+            <td><input type="checkbox" id="name45"></input>  <script>document.write(names[44])</script></td>
+            <td><input type="checkbox" id="name46"></input>  <script>document.write(names[45])</script></td>
+            <td><input type="checkbox" id="name47"></input>  <script>document.write(names[46])</script></td>
+            <td><input type="checkbox" id="name48"></input>  <script>document.write(names[47])</script></td>
+        </tr>
+        <tr>
+            <td><input type="checkbox" id="name49"></input>  <script>document.write(names[48])</script></td>
+            <td><input type="checkbox" id="name50"></input>  <script>document.write(names[49])</script></td>
+            <td><input type="checkbox" id="name51"></input>  <script>document.write(names[50])</script></td>
+            <td><input type="checkbox" id="name52"></input>  <script>document.write(names[51])</script></td>
+            <td><input type="checkbox" id="name53"></input>  <script>document.write(names[52])</script></td>
+            <td><input type="checkbox" id="name54"></input>  <script>document.write(names[53])</script></td>
+        </tr>
+        <tr>
+            <td><input type="checkbox" id="name55"></input>  <script>document.write(names[54])</script></td>
+            <td><input type="checkbox" id="name56"></input>  <script>document.write(names[55])</script></td>
+            <td><input type="checkbox" id="name57"></input>  <script>document.write(names[56])</script></td>
+            <td><input type="checkbox" id="name58"></input>  <script>document.write(names[57])</script></td>
+        </tr>
+        
+    </table>
+    <br>
+    <p>Enter additional players here:</p>
+    <input type="text" id="moreNames1" placeholder="Enter name here..."><br><br>
+    <input type="text" id="moreNames2" placeholder="Enter name here..."><br><br>
+    <input type="text" id="moreNames3" placeholder="Enter name here..."><br><br>
+    <input type="text" id="moreNames4" placeholder="Enter name here..."><br><br>
+    <p>Click on the "Submit" button when done selecting players</p>
+    <button onclick="mySubmitButton()">Submit</button>
+    <script>
+        
+        function mySubmitButton(){
+            var p1 = document.getElementById("name1");
+            var p2 = document.getElementById("name2");
+            var p3 = document.getElementById("name3");
+            var p4 = document.getElementById("name4");
+            var p5 = document.getElementById("name5");
+            var p6 = document.getElementById("name6");
+            var p7 = document.getElementById("name7");
+            var p8 = document.getElementById("name8");
+            var p9 = document.getElementById("name9");
+            var p10 = document.getElementById("name10");
+            var p11 = document.getElementById("name11");
+            var p12 = document.getElementById("name12");
+            var p13 = document.getElementById("name13");
+            var p14 = document.getElementById("name14");
+            var p15 = document.getElementById("name15");
+            var p16 = document.getElementById("name16");
+            var p17 = document.getElementById("name17");
+            var p18 = document.getElementById("name18");
+
+            var p19 = document.getElementById("name19");
+            var p20 = document.getElementById("name20");
+            var p21 = document.getElementById("name21");
+            var p22 = document.getElementById("name22");
+            var p23 = document.getElementById("name23");
+            var p24 = document.getElementById("name24");
+            var p25 = document.getElementById("name25");
+            var p26 = document.getElementById("name26");
+            var p27 = document.getElementById("name27");
+            var p28 = document.getElementById("name28");
+            var p29 = document.getElementById("name29");
+            var p30 = document.getElementById("name30");
+            var p31 = document.getElementById("name31");
+            var p32 = document.getElementById("name32");
+            var p33 = document.getElementById("name33");
+            var p34 = document.getElementById("name34");
+            var p35 = document.getElementById("name35");
+            var p36 = document.getElementById("name36");
+
+            var p37 = document.getElementById("name37");
+            var p38 = document.getElementById("name38");
+            var p39 = document.getElementById("name39");
+            var p40 = document.getElementById("name40");
+            var p41 = document.getElementById("name41");
+            var p42 = document.getElementById("name42");
+            var p43 = document.getElementById("name43");
+            var p44 = document.getElementById("name44");
+            var p45 = document.getElementById("name45");
+            var p46 = document.getElementById("name46");
+            var p47 = document.getElementById("name47");
+            var p48 = document.getElementById("name48");
+            var p49 = document.getElementById("name49");
+            var p50 = document.getElementById("name50");
+            var p51 = document.getElementById("name51");
+            var p52 = document.getElementById("name52");
+            var p53 = document.getElementById("name53");
+            var p54 = document.getElementById("name54");
+
+            var p55 = document.getElementById("name55");
+            var p56 = document.getElementById("name56");
+            var p57 = document.getElementById("name57");
+            var p58 = document.getElementById("name58");
+        
+            let groupofPlayers = [];
+            if (p1.checked){
+                groupofPlayers.push(names[0])
+            }
+            if (p2.checked){
+                groupofPlayers.push(names[1])
+            }
+            if (p3.checked){
+                groupofPlayers.push(names[2])
+            }
+            if (p4.checked){
+                groupofPlayers.push(names[3])
+            }
+            if (p5.checked){
+                groupofPlayers.push(names[4])
+            }
+            if (p6.checked){
+                groupofPlayers.push(names[5])
+            }
+            if (p7.checked){
+                groupofPlayers.push(names[6])
+            }
+            if (p8.checked){
+                groupofPlayers.push(names[7])
+            }
+            if (p9.checked){
+                groupofPlayers.push(names[8])
+            }
+            if (p10.checked){
+                groupofPlayers.push(names[9])
+            }
+            if (p11.checked){
+                groupofPlayers.push(names[10])
+            }
+            if (p12.checked){
+                groupofPlayers.push(names[11])
+            }
+            if (p13.checked){
+                groupofPlayers.push(names[12])
+            }
+            if (p14.checked){
+                groupofPlayers.push(names[13])
+            }
+            if (p15.checked){
+                groupofPlayers.push(names[14])
+            }
+            if (p16.checked){
+                groupofPlayers.push(names[15])
+            }
+            if (p17.checked){
+                groupofPlayers.push(names[16])
+            }
+            if (p18.checked){
+                groupofPlayers.push(names[17])
+            }
+            if (p19.checked){
+                groupofPlayers.push(names[18])
+            }
+            if (p20.checked){
+                groupofPlayers.push(names[19])
+            }
+            if (p21.checked){
+                groupofPlayers.push(names[20])
+            }
+            if (p22.checked){
+                groupofPlayers.push(names[21])
+            }
+            if (p23.checked){
+                groupofPlayers.push(names[22])
+            }
+            if (p24.checked){
+                groupofPlayers.push(names[23])
+            }
+            if (p25.checked){
+                groupofPlayers.push(names[24])
+            }
+            if (p26.checked){
+                groupofPlayers.push(names[25])
+            }
+            if (p27.checked){
+                groupofPlayers.push(names[26])
+            }
+            if (p28.checked){
+                groupofPlayers.push(names[27])
+            }
+            if (p29.checked){
+                groupofPlayers.push(names[28])
+            }
+            if (p30.checked){
+                groupofPlayers.push(names[29])
+            }
+            if (p31.checked){
+                groupofPlayers.push(names[30])
+            }
+            if (p32.checked){
+                groupofPlayers.push(names[31])
+            }
+            if (p33.checked){
+                groupofPlayers.push(names[32])
+            }
+            if (p34.checked){
+                groupofPlayers.push(names[33])
+            }
+            if (p35.checked){
+                groupofPlayers.push(names[34])
+            }
+            if (p36.checked){
+                groupofPlayers.push(names[35])
+            }
+            if (p37.checked){
+                groupofPlayers.push(names[36])
+            }
+            if (p38.checked){
+                groupofPlayers.push(names[37])
+            }
+            if (p39.checked){
+                groupofPlayers.push(names[38])
+            }
+            if (p40.checked){
+                groupofPlayers.push(names[39])
+            }
+            if (p41.checked){
+                groupofPlayers.push(names[40])
+            }
+            if (p42.checked){
+                groupofPlayers.push(names[41])
+            }
+            if (p43.checked){
+                groupofPlayers.push(names[42])
+            }
+            if (p44.checked){
+                groupofPlayers.push(names[43])
+            }
+            if (p45.checked){
+                groupofPlayers.push(names[44])
+            }
+            if (p46.checked){
+                groupofPlayers.push(names[45])
+            }
+            if (p47.checked){
+                groupofPlayers.push(names[46])
+            }
+            if (p48.checked){
+                groupofPlayers.push(names[47])
+            }
+            if (p49.checked){
+                groupofPlayers.push(names[48])
+            }
+            if (p50.checked){
+                groupofPlayers.push(names[49])
+            }
+            if (p51.checked){
+                groupofPlayers.push(names[50])
+            }
+            if (p52.checked){
+                groupofPlayers.push(names[51])
+            }
+            if (p53.checked){
+                groupofPlayers.push(names[52])
+            }
+            if (p54.checked){
+                groupofPlayers.push(names[53])
+            }
+            if (p55.checked){
+                groupofPlayers.push(names[54])
+            }
+            if (p56.checked){
+                groupofPlayers.push(names[55])
+            }
+            if (p57.checked){
+                groupofPlayers.push(names[56])
+            }
+            if (p58.checked){
+                groupofPlayers.push(names[57])
+            }
+          
+            
+        
+
+            console.log('groupofPlayers',groupofPlayers);
+
+            
+            
+
+            var e1 = document.getElementById("moreNames1").value;
+            var e2 = document.getElementById("moreNames2").value;
+            var e3 = document.getElementById("moreNames3").value;
+            var e4 = document.getElementById("moreNames4").value;
+            
+            if (e1.length > 0){
+                groupofPlayers.push(e1);
+            }
+            if (e2.length > 0){
+                groupofPlayers.push(e2);
+            }
+            if (e3.length > 0){
+                groupofPlayers.push(e3);
+            }
+            if (e4.length > 0){
+                groupofPlayers.push(e4);
+            }
+            
+            if (groupofPlayers.length === 4 || groupofPlayers.length === 8 || groupofPlayers.length === 12 || groupofPlayers.length === 16 ||
+            groupofPlayers.length === 20 || groupofPlayers.length === 24) {
+                let players = shuffle(groupofPlayers);
+                let G1 = myIndex();
+                let G2 = myIndex();
+                let G3 = myIndex();
+                let G4 = myIndex();
+                let G5 = myIndex();
+                let G6 = myIndex();
+                let G7 = myIndex();
+                let G8 = myIndex();
+                let G9 = myIndex();
+                self.socket.emit('gameList', players,G1,G2,G3,G4,G5,G6,G7,G8,G9);
+            } else {
+                alert("Player is list is not divisable by 4. Please correct to proceed.")
+            }
+
+            function shuffle(arra1){
+               let ctr = arra1.length, temp, index;
+               while(ctr > 0){
+                 index = Math.floor(Math.random() * ctr);
+                 ctr--;
+                 temp = arra1[ctr];
+                 arra1[ctr] = arra1[index];
+                 arra1[index] = temp;
+    }
+            return arra1;
+}
+                 
+        }
+    </script>
+
+
+</body>
+</html>

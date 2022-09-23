@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="_css/styles.css" rel="stylesheet">
+    <title>Start Page</title>
+</head>
+<body>
+    <div class="grid-title">
+        <div class="grid-it"><img class='hat' src='images/hat.png'/></div>
+        <div><h1>Joker-4P Game List Generator</h1></div>
+    </div>
+    
+     <div class="grid-container">
+           <div></div>
+           <div class="grid-item"><input type="text" id="myGroup" placeholder="Enter Group name..."></div>
+           <div class="grid-item"><button onclick="mySubmitButton()">Submit</button></div>
+     </div>
+     <br>
+     <div class="grid-button">
+        <div></div>
+        <div><p>or click a Group name below:</p></div>
+        <div></div>
+        <div><button onclick="myAlphaButton()">Alpha</button></div>
+        <div></div>
+        <div><button onclick="myBravoButton()">Bravo</button></div>
+    </div>
+    
+    
+    <br>
+    <br>
+    <p><u>Note</u>: The Group name should be provided by the host.  The Group name determines who gets the generatered Game List after it is created.</p>
+   <br>
+
+
+    <button class="link" onclick="myLink1()">Alternate link to Joker-4P  (resized)</button>
+    <br>
+    <br>
+    <button class="link" onclick="myLink2()">Alternate link to Joker-4P  (non-resized)</button>
+<br><br><br>
+    <a href="/instructionform.html" target='_blank'>Rules for Jokers</a>
+    <br><br>
+    <a href="/links.html" target="_blank">Other Links</a>
+   <script>
+        function mySubmitButton(){
+            var groupName = document.getElementById("myGroup").value;
+            if (groupName.length < 1){
+                alert("You must enter a Group Name to get a Game List.")
+            } else {
+                localStorage.setItem("groupName",groupName);
+                location.href = "players.html"; 
+            }
+    }
+        function myAlphaButton(){
+            var groupName = 'Alpha';
+            localStorage.setItem("groupName",groupName);
+            location.href = "players.html"; 
+    }
+        function myBravoButton(){
+            var groupName = 'Bravo';
+            localStorage.setItem("groupName",groupName);
+            location.href = "players.html"; 
+    }
+        function myLink1(){
+            window.open("https://joker4p.herokuapp.com", "", "width=1260, height=835")
+    }
+        function myLink2(){
+            window.open("https://joker4p.herokuapp.com")
+    }
+
+    </script>
+</body>
+</html>
